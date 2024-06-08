@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
-const defaultEmail = 'mathbello@gmail.com'; // E-mail padrão para envio
+const defaultEmail = 'espaconajla@gmail.com'; // E-mail padrão para envio
 
 async function gerarPdf(data) {
   try {
