@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -145,8 +146,8 @@ app.post('/api/enviar-pdf', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'obellojoga@gmail.com', // Substitua pelo seu email
-        pass: 'frmf ipai zylw evmz'   // Substitua pela sua senha
+        user: process.env.EMAIL_USER, // Substitua pelo seu email
+        pass: process.env.EMAIL_PASS  // Substitua pela sua senha
       }
     });
 
@@ -177,8 +178,10 @@ app.post('/api/enviar-pdf', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+module.exports = app;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 3000;
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
