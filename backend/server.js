@@ -120,6 +120,9 @@ async function gerarPdf(data) {
   }
 }
 
+app.get('/', (req, res) => {
+  return res.json("hello world!");
+})
 
 app.post('/api/visualizar-pdf', async (req, res) => {
   try {
