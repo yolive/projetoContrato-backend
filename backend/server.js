@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
 require('dotenv').config();
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors());
 
 const defaultEmail = 'mathbello@gmail.com'; // E-mail padrão para envio
 
