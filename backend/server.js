@@ -7,7 +7,13 @@ const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+// Habilitando CORS apenas para as rotas específicas
+app.options('/api/visualizar-pdf', cors());
+app.options('/api/enviar-pdf', cors());
+
+// Defina os endereços permitidos (no caso, qualquer um '*')
+app.use(cors({ origin: '*' }));
 
 const defaultEmail = 'mathbello@gmail.com'; // E-mail padrão para envio
 
