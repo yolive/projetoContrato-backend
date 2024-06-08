@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const defaultEmail = 'mathbello@gmail.com'; // E-mail padrão para envio
 
