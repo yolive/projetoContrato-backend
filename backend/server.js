@@ -2,11 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+// Habilitando CORS apenas para as rotas específicas
+app.options('/api/visualizar-pdf', cors());
+app.options('/api/enviar-pdf', cors());
+
+// Endereços permitidos (no caso, qualquer um '*')
+app.use(cors({ origin: '*' }));
 
 const defaultEmail = 'mathbello@gmail.com'; // E-mail padrão para envio
 
